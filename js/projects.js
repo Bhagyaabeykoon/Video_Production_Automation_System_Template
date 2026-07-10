@@ -53,9 +53,16 @@ function loadProjects() {
                 <td>${project.deadline}</td>
                 <td>${project.priority}</td>
                 <td>
-                    <span class="status ${(project.status || "Planning").replace(/\s+/g, '-')}">
-                        ${project.status || "Planning"}
-                    </span>
+                    <select onchange="updateStatus('${project.projectId}', this.value)">
+                        <option value="Planning" ${project.status === "Planning" ? "selected" : ""}>Planning</option>
+                        <option value="Script Pending" ${project.status === "Script Pending" ? "selected" : ""}>Script Pending</option>
+                        <option value="Script Received" ${project.status === "Script Received" ? "selected" : ""}>Script Received</option>
+                        <option value="Shooting Scheduled" ${project.status === "Shooting Scheduled" ? "selected" : ""}>Shooting Scheduled</option>
+                        <option value="Editing" ${project.status === "Editing" ? "selected" : ""}>Editing</option>
+                        <option value="Revision" ${project.status === "Revision" ? "selected" : ""}>Revision</option>
+                        <option value="Uploaded" ${project.status === "Uploaded" ? "selected" : ""}>Uploaded</option>
+                        <option value="Completed" ${project.status === "Completed" ? "selected" : ""}>Completed</option>
+                    </select>
                 </td>
 
                 <td>
