@@ -1,3 +1,4 @@
+let editingProjectId = null;
 // Save Project
 document.getElementById("saveProjectBtn").addEventListener("click", function () {
 
@@ -5,13 +6,16 @@ document.getElementById("saveProjectBtn").addEventListener("click", function () 
 
     let projects = JSON.parse(localStorage.getItem("projects")) || [];
 
-    const exists = projects.some(
-        project => project.projectId === projectId
-    );
+    if(editingProjectId === null){
 
-    if (exists) {
-        alert("Project ID already exists!");
-        return;
+        const exists = projects.some(
+            project => project.projectId === projectId
+        );
+
+        if(exists){
+            alert("Project ID already exists!");
+            return;
+        }
     }
 
     const project = {
@@ -25,7 +29,20 @@ document.getElementById("saveProjectBtn").addEventListener("click", function () 
         createdDate: new Date().toISOString().split("T")[0]
     };
 
-    projects.push(project);
+    if(editingProjectId){
+
+        const index = projects.findIndex(
+            p => p.projectId === editingProjectId
+        );
+
+        projects[index] = project;
+
+        editingProjectId = null;
+
+    }else{
+
+        projects.push(project);
+    }
 
     localStorage.setItem("projects", JSON.stringify(projects));
 
@@ -129,6 +146,8 @@ function editProject(projectId){
     document.getElementById("priority").value =
         project.priority;
 
+    editingProjectId = projectId;
+
     modal.style.display = "block";
 }
 
@@ -166,3 +185,24 @@ document.getElementById("closeModal")
 .addEventListener("click", () => {
     modal.style.display = "none";
 });
+
+function updateStatus(projectId, newStatus){
+
+    let projects =
+        JSON.parse(localStorage.getItem("projects")) || [];
+
+    const project = projects.find(
+        p => p.projectId === projectId
+    );
+
+    if(project){
+        project.status = newStatus;
+    }
+
+    localStorage.setItem(
+        "projects",
+        JSON.stringify(projects)
+    );
+
+    loadProjects();
+}
