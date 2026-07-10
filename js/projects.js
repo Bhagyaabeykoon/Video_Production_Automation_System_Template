@@ -1,0 +1,161 @@
+// Save Project
+document.getElementById("saveProjectBtn").addEventListener("click", function () {
+
+    const projectId = document.getElementById("projectId").value.trim();
+
+    let projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+    const exists = projects.some(
+        project => project.projectId === projectId
+    );
+
+    if (exists) {
+        alert("Project ID already exists!");
+        return;
+    }
+
+    const project = {
+        projectId: document.getElementById("projectId").value,
+        clientName: document.getElementById("clientName").value,
+        businessName: document.getElementById("businessName").value,
+        videoCount: document.getElementById("videoCount").value,
+        deadline: document.getElementById("deadline").value,
+        priority: document.getElementById("priority").value,
+        status: "Planning",
+        createdDate: new Date().toISOString().split("T")[0]
+    };
+
+    projects.push(project);
+
+    localStorage.setItem("projects", JSON.stringify(projects));
+
+    alert("Project Saved Successfully!");
+
+    location.reload();
+});
+
+function loadProjects() {
+
+    const projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+    const tableBody = document.getElementById("projectsBody");
+
+    tableBody.innerHTML = "";
+
+    projects.forEach(project => {
+
+        tableBody.innerHTML += `
+            <tr>
+                <td>${project.projectId}</td>
+                <td>${project.clientName}</td>
+                <td>${project.businessName}</td>
+                <td>${project.videoCount}</td>
+                <td>${project.deadline}</td>
+                <td>${project.priority}</td>
+                <td>
+                    <span class="status ${(project.status || "Planning").replace(/\s+/g, '-')}">
+                        ${project.status || "Planning"}
+                    </span>
+                </td>
+
+                <td>
+                    <button onclick="editProject('${project.projectId}')">
+                        Edit
+                    </button>
+
+                    <button onclick="deleteProject('${project.projectId}')">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        `;
+
+    });
+
+}
+
+loadProjects();
+
+function deleteProject(projectId){
+
+    let projects =
+        JSON.parse(localStorage.getItem("projects")) || [];
+
+    projects = projects.filter(
+        project => project.projectId !== projectId
+    );
+
+    localStorage.setItem(
+        "projects",
+        JSON.stringify(projects)
+    );
+
+    loadProjects();
+}
+
+function editProject(projectId){
+
+    const projects =
+        JSON.parse(localStorage.getItem("projects")) || [];
+
+    const project = projects.find(
+        p => p.projectId === projectId
+    );
+
+    if(!project) return;
+
+    document.getElementById("projectId").value =
+        project.projectId;
+
+    document.getElementById("clientName").value =
+        project.clientName;
+
+    document.getElementById("businessName").value =
+        project.businessName;
+
+    document.getElementById("videoCount").value =
+        project.videoCount;
+
+    document.getElementById("deadline").value =
+        project.deadline;
+
+    document.getElementById("priority").value =
+        project.priority;
+
+    modal.style.display = "block";
+}
+
+document.getElementById("searchProject")
+.addEventListener("keyup", function(){
+
+    const search = this.value.toLowerCase();
+
+    const rows =
+        document.querySelectorAll("#projectsBody tr");
+
+    rows.forEach(row => {
+
+        const text = row.innerText.toLowerCase();
+
+        row.style.display =
+            text.includes(search)
+            ? ""
+            : "none";
+    });
+
+});
+
+loadProjects();
+
+const modal =
+    document.getElementById("projectModal");
+
+document.getElementById("openModalBtn")
+.addEventListener("click", () => {
+    modal.style.display = "block";
+});
+
+document.getElementById("closeModal")
+.addEventListener("click", () => {
+    modal.style.display = "none";
+});

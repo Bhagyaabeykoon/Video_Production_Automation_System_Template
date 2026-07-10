@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/projects.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>VPAS</h2>
+                <p>Video Automation</p>
+            </div>
+
+            <ul class="menu">
+                <li onclick="window.location='../dashboard.html'">🏠 Dashboard</li>
+                <li class="active" onclick="window.location='projects.html'">📁 Projects</li>
+                <li onclick="window.location='scripts.html'">📝 Scripts</li>
+                <li onclick="window.location='shooting.html'">🎥 Shooting</li>
+                <li onclick="window.location='budget.html'">💰 Budget</li>
+                <li onclick="window.location='editing.html'">✂️ Editing</li>
+                <li onclick="window.location='revisions.html'">🔄 Revisions</li>
+                <li onclick="window.location='uploads.html'">📤 Uploads</li>
+                <li onclick="window.location='analytics.html'">📊 Analytics</li>
+                <li onclick="window.location='settings.html'">⚙️ Settings</li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <h1>Project Management</h1>
+
+            <div class="top-actions">
+                <button id="openModalBtn">
+                    + New Project
+                </button>
+            </div>
+
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="searchProject"
+                    placeholder="Search by Client Name, Business Name or Project ID..."
+                >
+            </div>
+
+            <div class="project-stats">
+
+                <div class="stat-card">
+                    <h4>Total Projects</h4>
+                    <h2 id="totalProjects">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Active Projects</h4>
+                    <h2 id="activeProjects">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Completed</h4>
+                    <h2 id="completedProjects">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Overdue</h4>
+                    <h2 id="overdueProjects">0</h2>
+                </div>
+
+            </div>
+
+            <h2>Saved Projects</h2>
+
+            <table id="projectsTable">
+                <thead>
+                    <tr>
+                        <th>Project ID</th>
+                        <th>Client Name</th>
+                        <th>Business Name</th>
+                        <th>Videos</th>
+                        <th>Deadline</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="projectsBody"></tbody>
+            </table>
+
+        </main>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="projectModal">
+
+        <div class="modal-content">
+
+            <span id="closeModal">&times;</span>
+
+            <h2>New Project</h2>
+
+            <input
+                type="text"
+                id="projectId"
+                placeholder="Enter Project ID"
+            >
+
+            <input
+                type="text"
+                id="clientName"
+                placeholder="Client Name"
+            >
+
+            <input
+                type="text"
+                id="businessName"
+                placeholder="Business Name"
+            >
+
+            <input
+                type="number"
+                id="videoCount"
+                placeholder="Number of Videos"
+            >
+
+            <input
+                type="date"
+                id="deadline"
+            >
+
+            <select id="priority">
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select>
+
+            <select id="status">
+                <option value="Planning">Planning</option>
+                <option value="Script Pending">Script Pending</option>
+                <option value="Script Received">Script Received</option>
+                <option value="Shooting Scheduled">Shooting Scheduled</option>
+                <option value="Editing">Editing</option>
+                <option value="Revision">Revision</option>
+                <option value="Uploaded">Uploaded</option>
+                <option value="Completed">Completed</option>
+            </select>
+
+            <button id="saveProjectBtn">
+                Save Project
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="../js/projects.js"></script>
+
+</body>
+</html>

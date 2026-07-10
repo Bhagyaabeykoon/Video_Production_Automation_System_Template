@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Production Automation System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>VPAS</h2>
+                <p>Video Automation</p>
+            </div>
+
+            <ul class="menu">
+                <li class="active" onclick="window.location='dashboard.html'">🏠 Dashboard</li>
+                <li onclick="window.location='pages/projects.html'">
+                    📁 Projects
+                </li>
+                <li onclick="window.location='pages/scripts.html'">📝 Scripts</li>
+                <li onclick="window.location='pages/shooting.html'">🎥 Shooting</li>
+                <li onclick="window.location='pages/budget.html'">💰 Budget</li>
+                <li onclick="window.location='pages/editing.html'">✂️ Editing</li>
+                <li onclick="window.location='pages/revisions.html'">🔄 Revisions</li>
+                <li onclick="window.location='pages/uploads.html'">📤 Uploads</li>
+                <li onclick="window.location='pages/analytics.html'">📊 Analytics</li>
+                <li onclick="window.location='pages/settings.html'">⚙️ Settings</li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Top Bar -->
+            <div class="topbar">
+                <h1>Dashboard</h1>
+
+                <div class="profile">
+                    <span>Admin</span>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Total Projects</h3>
+                    <h2>0</h2>
+                </div>
+
+                <div class="card">
+                    <h3>Active Videos</h3>
+                    <h2>0</h2>
+                </div>
+
+                <div class="card">
+                    <h3>In Editing</h3>
+                    <h2>0</h2>
+                </div>
+
+                <div class="card">
+                    <h3>Pending Revisions</h3>
+                    <h2>0</h2>
+                </div>
+
+                <div class="card">
+                    <h3>Uploaded Videos</h3>
+                    <h2>0</h2>
+                </div>
+
+                <div class="card">
+                    <h3>Revenue</h3>
+                    <h2>Rs. 0</h2>
+                </div>
+
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="bottom-section">
+
+                <!-- Recent Activities -->
+                <div class="panel">
+                    <h2>Recent Activities</h2>
+
+                    <div class="activity-item">
+                        <span>📝 Script received for Kyno Labs Video 01</span>
+                        <small>2 hours ago</small>
+                    </div>
+
+                    <div class="activity-item">
+                        <span>🎥 Shooting completed for Blue Moon Events</span>
+                        <small>5 hours ago</small>
+                    </div>
+
+                    <div class="activity-item">
+                        <span>✂️ Video sent to editor</span>
+                        <small>Yesterday</small>
+                    </div>
+                </div>
+
+                <!-- Upcoming Shoots -->
+                <div class="panel">
+                    <h2>Upcoming Shoots</h2>
+
+                    <div class="shoot-item">
+                        <strong>Kyno Labs</strong>
+                        <p>12 July 2026 - 9:00 AM</p>
+                    </div>
+
+                    <div class="shoot-item">
+                        <strong>Blue Moon Events</strong>
+                        <p>13 July 2026 - 2:00 PM</p>
+                    </div>
+
+                    <div class="shoot-item">
+                        <strong>Sunethra Fashion</strong>
+                        <p>15 July 2026 - 10:00 AM</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>
