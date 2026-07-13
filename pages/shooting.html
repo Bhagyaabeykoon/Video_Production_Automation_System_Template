@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scripts</title>
+    <title>Shooting</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/projects.css">
+    <link rel="stylesheet" href="../css/shooting.css">
 </head>
 <body>
 
@@ -22,8 +22,8 @@
             <ul class="menu">
                 <li onclick="window.location='../dashboard.html'">🏠 Dashboard</li>
                 <li onclick="window.location='projects.html'">📁 Projects</li>
-                <li class="active" onclick="window.location='scripts.html'">📝 Scripts</li>
-                <li onclick="window.location='shooting.html'">🎥 Shooting</li>
+                <li onclick="window.location='scripts.html'">📝 Scripts</li>
+                <li class="active" onclick="window.location='shooting.html'">🎥 Shooting</li>
                 <li onclick="window.location='budget.html'">💰 Budget</li>
                 <li onclick="window.location='editing.html'">✂️ Editing</li>
                 <li onclick="window.location='revisions.html'">🔄 Revisions</li>
@@ -36,11 +36,11 @@
         <!-- Main Content -->
         <main class="main-content">
 
-            <h1>Scripts Management</h1>
+            <h1>Shooting Management</h1>
 
             <div class="top-actions">
                 <button id="openModalBtn">
-                    + New Script
+                    + New Shoot
                 </button>
             </div>
 
@@ -48,35 +48,35 @@
                 <input
                     type="text"
                     id="searchScript"
-                    placeholder="Search by Project ID, Video Number or Script Writer..."
+                    placeholder="Search by Project ID, Presenter or Location..."
                 >
             </div>
 
             <div class="project-stats">
 
                 <div class="stat-card">
-                    <h4>Total Scripts</h4>
-                    <h2 id="totalScripts">0</h2>
+                    <h4>Total Shoots</h4>
+                    <h2 id="totalShoots">0</h2>
                 </div>
 
                 <div class="stat-card">
-                    <h4>Pending Scripts</h4>
-                    <h2 id="pendingScripts">0</h2>
+                    <h4>Scheduled</h4>
+                    <h2 id="scheduledShoots">0</h2>
                 </div>
 
                 <div class="stat-card">
-                    <h4>Received Scripts</h4>
-                    <h2 id="receivedScripts">0</h2>
+                    <h4>Completed</h4>
+                    <h2 id="completedShoots">0</h2>
                 </div>
 
                 <div class="stat-card">
-                    <h4>Overdue Scripts</h4>
-                    <h2 id="overdueScripts">0</h2>
+                    <h4>Pending</h4>
+                    <h2 id="pendingShoots">0</h2>
                 </div>
 
             </div>
 
-            <h2>Saved Scripts</h2>
+            <h2>Saved Shoots</h2>
 
             <table id="scriptsTable">
 
@@ -84,15 +84,17 @@
                     <tr>
                         <th>Project ID</th>
                         <th>Video No</th>
-                        <th>Requested Date</th>
-                        <th>Received Date</th>
-                        <th>Script Writer</th>
+                        <th>Shoot Date</th>
+                        <th>Shoot Time</th>
+                        <th>Location</th>
+                        <th>Presenter</th>
                         <th>Status</th>
                         <th>Actions</th>
+
                     </tr>
                 </thead>
 
-                <tbody id="scriptsBody">
+                <tbody id="shootingBody">
 
                 </tbody>
 
@@ -103,16 +105,15 @@
     </div>
 
     <!-- Script Modal -->
-<div class="modal" id="scriptModal">
+<div class="modal" id="shootingModal">
 
     <div class="modal-content">
 
         <span id="closeModal">&times;</span>
 
-        <h2>New Script</h2>
+        <h2>New Shoot</h2>
 
         <label>Project</label>
-
         <select id="projectId">
             <option value="">Select Project</option>
         </select>
@@ -124,35 +125,41 @@
             placeholder="Video Number"
         >
 
-        <label>Requested Date</label>
+        <label>Shoot Date</label>
         <input
             type="date"
-            id="requestedDate"
+            id="shootDate"
         >
 
-        <label>Received Date</label>
+        <label>Shoot Time</label>
         <input
-            type="date"
-            id="receivedDate"
+            type="time"
+            id="shootTime"
         >
 
-        <label>Script Writer</label>
+        <label>Location</label>
         <input
             type="text"
-            id="scriptWriter"
-            placeholder="Script Writer"
+            id="location"
+            placeholder="Location"
         >
 
-        <button id="saveScriptBtn">
-            Save Script
+        <label>Presenter</label>
+        <input
+            type="text"
+            id="presenter"
+            placeholder="Presenter"
+        >
+
+        <button id="saveShootBtn">
+            Save Shoot
         </button>
 
     </div>
 
 </div>
 
-    
-    <script src="../js/scripts.js"></script>
+        <script src="../js/shooting.js"></script>
 
 </body>
 </html>

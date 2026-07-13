@@ -1,6 +1,10 @@
 let editingProjectId = null;
 // Save Project
-document.getElementById("saveProjectBtn").addEventListener("click", function () {
+const saveProjectBtn = document.getElementById("saveProjectBtn");
+
+if (saveProjectBtn) {
+
+    saveProjectBtn.addEventListener("click", function () {
 
     const projectId = document.getElementById("projectId").value.trim();
 
@@ -191,9 +195,10 @@ function updateStatus(projectId, newStatus){
     let projects =
         JSON.parse(localStorage.getItem("projects")) || [];
 
-    const project = projects.find(
-        p => p.projectId === projectId
-    );
+    const project =
+        projects.find(
+            p => p.projectId === projectId
+        );
 
     if(project){
         project.status = newStatus;
@@ -205,4 +210,53 @@ function updateStatus(projectId, newStatus){
     );
 
     loadProjects();
+    updateProjectCards();
 }
+
+
+function updateProjectCards(){
+
+    const projects =
+        JSON.parse(localStorage.getItem("projects")) || [];
+
+    const totalProjects = projects.length;
+
+    const activeProjects = projects.filter(
+        p => p.status !== "Completed"
+    ).length;
+
+    const completedProjects = projects.filter(
+        p => p.status === "Completed"
+    ).length;
+
+    const overdueProjects = projects.filter(project => {
+
+        const today = new Date();
+
+        const deadline =
+            new Date(project.deadline);
+
+        return (
+            deadline < today &&
+            project.status !== "Completed"
+        );
+
+    }).length;
+
+    document.getElementById("totalProjects").innerText =
+        totalProjects;
+
+    document.getElementById("activeProjects").innerText =
+        activeProjects;
+
+    document.getElementById("completedProjects").innerText =
+        completedProjects;
+
+    document.getElementById("overdueProjects").innerText =
+        overdueProjects;
+}
+
+    loadProjects();
+    updateProjectCards();
+}
+
