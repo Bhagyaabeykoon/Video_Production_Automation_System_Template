@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPAS - Budget Management</title>
+
+    <link rel="stylesheet" href="../css/budget.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>VPAS</h2>
+                <p>Video Automation</p>
+            </div>
+
+            <ul class="menu">
+                <li onclick="window.location='../dashboard.html'">🏠 Dashboard</li>
+                <li onclick="window.location='projects.html'">📁 Projects</li>
+                <li onclick="window.location='scripts.html'">📝 Scripts</li>
+                <li onclick="window.location='shooting.html'">🎥 Shooting</li>
+                <li class="active" onclick="window.location='budget.html'">💰 Budget</li>
+                <li onclick="window.location='editing.html'">✂️ Editing</li>
+                <li onclick="window.location='revisions.html'">🔄 Revisions</li>
+                <li onclick="window.location='uploads.html'">📤 Uploads</li>
+                <li onclick="window.location='analytics.html'">📊 Analytics</li>
+                <li onclick="window.location='settings.html'">⚙️ Settings</li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <h1>Budget Management</h1>
+
+            <div class="top-actions">
+                <button id="addBudgetBtn" class="btn-primary">
+                    + Add Budget
+                </button>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="project-stats">
+
+                <div class="stat-card">
+                    <h4>Total Budgets</h4>
+                    <h2 id="totalBudgets">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Total Planned</h4>
+                    <h2 id="totalPlanned">Rs. 0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Total Spent</h4>
+                    <h2 id="totalSpent">Rs. 0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Remaining</h4>
+                    <h2 id="remainingAmount">Rs. 0</h2>
+                </div>
+
+            </div>
+
+            <!-- Search -->
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by Budget ID or Project Name..."
+                >
+            </div>
+
+            <!-- Budget Table -->
+            <h2>Saved Budgets</h2>
+
+            <table id="budgetTable">
+
+                <thead>
+                    <tr>
+                        <th>Budget ID</th>
+                        <th>Project</th>
+                        <th>Planned Budget</th>
+                        <th>Spent</th>
+                        <th>Remaining</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="budgetTableBody"></tbody>
+
+            </table>
+
+        </main>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="budgetModal">
+
+        <div class="modal-content">
+
+            <span class="close" id="closeModal">&times;</span>
+
+            <h2 id="modalTitle">Add Budget</h2>
+
+            <input type="hidden" id="editIndex">
+
+            <label for="budgetId">Budget ID</label>
+            <input type="text" id="budgetId" placeholder="Enter Budget ID">
+
+            <label for="projectName">Project</label>
+            <select id="projectName">
+                <option value="">Select Project</option>
+            </select>
+
+            <label for="plannedBudget">Planned Budget</label>
+            <input type="number" id="plannedBudget" placeholder="Enter Planned Budget">
+
+            <label for="scriptCost">Script Cost</label>
+            <input type="number" id="scriptCost" placeholder="Enter Script Cost">
+
+            <label for="shootingCost">Shooting Cost</label>
+            <input type="number" id="shootingCost" placeholder="Enter Shooting Cost">
+
+            <label for="editingCost">Editing Cost</label>
+            <input type="number" id="editingCost" placeholder="Enter Editing Cost">
+
+            <label for="uploadCost">Upload Cost</label>
+            <input type="number" id="uploadCost" placeholder="Enter Upload Cost">
+
+            <label for="miscCost">Miscellaneous Cost</label>
+            <input type="number" id="miscCost" placeholder="Enter Miscellaneous Cost">
+
+            <button id="saveBudgetBtn" class="btn-primary">
+                Save Budget
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="../js/budget.js"></script>
+
+</body>
+</html>
