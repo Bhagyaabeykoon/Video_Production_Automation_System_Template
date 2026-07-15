@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editing Management</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/editing.css">
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>VPAS</h2>
+            <p>Video Automation</p>
+        </div>
+
+        <ul class="menu">
+            <li onclick="window.location='../dashboard.html'">🏠 Dashboard</li>
+            <li onclick="window.location='projects.html'">📁 Projects</li>
+            <li onclick="window.location='scripts.html'">📝 Scripts</li>
+            <li onclick="window.location='shooting.html'">🎥 Shooting</li>
+            <li onclick="window.location='budget.html'">💰 Budget</li>
+            <li class="active" onclick="window.location='editing.html'">✂️ Editing</li>
+            <li onclick="window.location='revisions.html'">🔄 Revisions</li>
+            <li onclick="window.location='uploads.html'">📤 Uploads</li>
+            <li onclick="window.location='analytics.html'">📊 Analytics</li>
+            <li onclick="window.location='settings.html'">⚙️ Settings</li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+
+        <h1>Editing Management</h1>
+
+        <div class="top-actions">
+            <button id="openModalBtn">+ New Editing Task</button>
+        </div>
+
+        <div class="project-stats">
+            <div class="stat-card">
+                <h4>Total Tasks</h4>
+                <h2 id="totalTasks">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <h4>Pending</h4>
+                <h2 id="pendingTasks">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <h4>In Progress</h4>
+                <h2 id="progressTasks">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <h4>Completed</h4>
+                <h2 id="completedTasks">0</h2>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="searchEditing" placeholder="Search Editing Tasks...">
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Editing ID</th>
+                    <th>Project</th>
+                    <th>Editor</th>
+                    <th>Assigned Date</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="editingBody"></tbody>
+        </table>
+
+    </main>
+
+</div>
+
+<div class="modal" id="editingModal">
+
+    <div class="modal-content">
+
+        <span id="closeModal">&times;</span>
+
+        <h2>Editing Task</h2>
+
+        <input type="hidden" id="editIndex">
+
+        <label>Editing ID</label>
+        <input type="text" id="editingId">
+
+        <label>Project</label>
+        <select id="projectId">
+            <option value="">Select Project</option>
+        </select>
+
+        <label>Editor Name</label>
+        <input type="text" id="editorName">
+
+        <label>Assigned Date</label>
+        <input type="date" id="assignedDate">
+
+        <label>Due Date</label>
+        <input type="date" id="dueDate">
+
+        <label>Status</label>
+        <select id="status">
+            <option>Pending</option>
+            <option>In Progress</option>
+            <option>Review</option>
+            <option>Completed</option>
+        </select>
+
+        <button id="saveEditingBtn">
+            Save Editing Task
+        </button>
+
+    </div>
+
+</div>
+
+<script src="../js/editing.js"></script>
+
+</body>
+</html>
