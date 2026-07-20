@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics Dashboard</title>
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="../css/analytics.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>VPAS</h2>
+            <p>Video Automation</p>
+        </div>
+
+        <ul class="menu">
+
+            <li onclick="window.location='../dashboard.html'">
+                🏠 Dashboard
+            </li>
+
+            <li onclick="window.location='projects.html'">
+                📁 Projects
+            </li>
+
+            <li onclick="window.location='scripts.html'">
+                📝 Scripts
+            </li>
+
+            <li onclick="window.location='shooting.html'">
+                🎥 Shooting
+            </li>
+
+            <li onclick="window.location='budget.html'">
+                💰 Budget
+            </li>
+
+            <li onclick="window.location='editing.html'">
+                ✂️ Editing
+            </li>
+
+            <li onclick="window.location='revisions.html'">
+                🔄 Revisions
+            </li>
+
+            <li onclick="window.location='uploads.html'">
+                📤 Uploads
+            </li>
+
+            <li class="active">
+                📊 Analytics
+            </li>
+
+            <li onclick="window.location='settings.html'">
+                ⚙️ Settings
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <h1>Analytics Dashboard</h1>
+
+        <!-- KPI Cards -->
+
+        <div class="project-stats">
+
+            <div class="stat-card">
+                <h4>Total Projects</h4>
+                <h2 id="totalProjects">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <h4>Total Budget</h4>
+                <h2 id="totalBudget">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <h4>Completed Videos</h4>
+                <h2 id="completedVideos">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <h4>Total Uploads</h4>
+                <h2 id="totalUploads">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <h4>Completion %</h4>
+                <h2 id="completionRate">0%</h2>
+            </div>
+
+            <div class="stat-card">
+                <h4>Pending Tasks</h4>
+                <h2 id="pendingTasks">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <h4>Total Revisions</h4>
+                <h2 id="revisionCount">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <h4>Uploaded Videos</h4>
+                <h2 id="uploadedVideos">0</h2>
+            </div>
+
+        </div>
+
+        <!-- Charts -->
+
+        <div class="chart-grid">
+
+            <div class="chart-card">
+                <h3>Project Progress</h3>
+                <canvas id="projectChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Upload Platforms</h3>
+                <canvas id="platformChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Budget Analysis</h3>
+                <canvas id="budgetChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Upload Status</h3>
+                <canvas id="uploadChart"></canvas>
+            </div>
+
+        </div>
+
+        <!-- Analytics Table -->
+
+        <h2 class="table-title">
+
+            Project Summary
+
+        </h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Project ID</th>
+                    <th>Budget</th>
+                    <th>Editing</th>
+                    <th>Revisions</th>
+                    <th>Uploads</th>
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="analyticsBody">
+
+            </tbody>
+
+        </table>
+
+    </main>
+
+</div>
+
+<script src="../js/analytics.js"></script>
+
+</body>
+</html>
