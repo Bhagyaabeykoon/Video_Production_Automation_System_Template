@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Uploads Management</title>
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="../css/uploads.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>VPAS</h2>
+            <p>Video Automation</p>
+        </div>
+
+        <ul class="menu">
+
+            <li onclick="window.location='../dashboard.html'">
+                🏠 Dashboard
+            </li>
+
+            <li onclick="window.location='projects.html'">
+                📁 Projects
+            </li>
+
+            <li onclick="window.location='scripts.html'">
+                📝 Scripts
+            </li>
+
+            <li onclick="window.location='shooting.html'">
+                🎥 Shooting
+            </li>
+
+            <li onclick="window.location='budget.html'">
+                💰 Budget
+            </li>
+
+            <li onclick="window.location='editing.html'">
+                ✂️ Editing
+            </li>
+
+            <li onclick="window.location='revisions.html'">
+                🔄 Revisions
+            </li>
+
+            <li class="active">
+                📤 Uploads
+            </li>
+
+            <li onclick="window.location='analytics.html'">
+                📊 Analytics
+            </li>
+
+            <li onclick="window.location='settings.html'">
+                ⚙️ Settings
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <h1>Uploads Management</h1>
+
+        <div class="top-actions">
+
+            <button id="openModalBtn">
+                + New Upload
+            </button>
+
+        </div>
+
+        <!-- KPI Cards -->
+
+        <div class="project-stats">
+
+            <div class="stat-card">
+
+                <h4>Total Uploads</h4>
+
+                <h2 id="totalUploads">0</h2>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h4>Pending</h4>
+
+                <h2 id="pendingUploads">0</h2>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h4>Scheduled</h4>
+
+                <h2 id="scheduledUploads">0</h2>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h4>Uploaded</h4>
+
+                <h2 id="uploadedUploads">0</h2>
+
+            </div>
+
+        </div>
+
+        <!-- Search -->
+
+        <div class="search-container">
+
+            <input
+                type="text"
+                id="searchUpload"
+                placeholder="Search Uploads...">
+
+        </div>
+
+        <!-- Table -->
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Upload ID</th>
+                    <th>Project</th>
+                    <th>Platform</th>
+                    <th>Upload Date</th>
+                    <th>Upload Time</th>
+                    <th>Status</th>
+                    <th>Link</th>
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="uploadBody"></tbody>
+
+        </table>
+
+    </main>
+
+</div>
+
+<!-- Modal -->
+
+<div
+    class="modal"
+    id="uploadModal">
+
+    <div class="modal-content">
+
+        <span id="closeModal">
+            &times;
+        </span>
+
+        <h2>Upload Task</h2>
+
+        <input
+            type="hidden"
+            id="editIndex">
+
+        <label>Upload ID</label>
+
+        <input
+            type="text"
+            id="uploadId">
+
+        <label>Project</label>
+
+        <select id="projectId">
+
+            <option value="">
+                Select Project
+            </option>
+
+        </select>
+
+        <label>Platform</label>
+
+        <select id="platform">
+
+            <option>Facebook</option>
+            <option>Instagram</option>
+            <option>TikTok</option>
+            <option>YouTube</option>
+            <option>LinkedIn</option>
+            <option>X (Twitter)</option>
+            <option>Website</option>
+            <option>Other</option>
+
+        </select>
+
+        <label>Upload Date</label>
+
+        <input
+            type="date"
+            id="uploadDate">
+
+        <label>Upload Time</label>
+
+        <input
+            type="time"
+            id="uploadTime">
+
+        <label>Status</label>
+
+        <select id="status">
+
+            <option>Pending</option>
+            <option>Scheduled</option>
+            <option>Uploaded</option>
+
+        </select>
+
+        <label>Social Media Link</label>
+
+        <input
+            type="url"
+            id="socialLink"
+            placeholder="https://">
+
+        <label>Notes</label>
+
+        <input
+            type="text"
+            id="notes"
+            placeholder="Enter Notes">
+
+        <button id="saveUploadBtn">
+
+            Save Upload
+
+        </button>
+
+    </div>
+
+</div>
+
+<script src="../js/uploads.js"></script>
+
+</body>
+
+</html>
